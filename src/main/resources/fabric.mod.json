@@ -6,8 +6,8 @@
 	"description": "Hint of panda genes visible on their textures.",
 	"authors": [ "Fabien Gigante" ],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/fabien-gigante/VisiblePandaGenesMod",
+		"sources": "https://github.com/fabien-gigante/VisiblePandaGenesMod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/visible-panda-genes/icon.png",
