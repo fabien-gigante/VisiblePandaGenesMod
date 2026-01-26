@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "visible-panda-genes",
+	"version": "${version}",
+	"name": "Visible Panda Genes",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [ "Fabien Gigante" ],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/visible-panda-genes/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.fabien_gigante.VisiblePandaGenesMod"
+		],
+		"client": [
+			"com.fabien_gigante.VisiblePandaGenesClient"
+		]
+	},
+	"mixins": [
+		"visible-panda-genes.mixins.json",
+		{
+			"config": "visible-panda-genes.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.11",
+		"java": ">=21"
+	}
+}
