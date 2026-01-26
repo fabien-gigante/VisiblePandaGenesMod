@@ -3,7 +3,7 @@
 	"id": "visible-panda-genes",
 	"version": "${version}",
 	"name": "Visible Panda Genes",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Hint of panda genes visible on their textures.",
 	"authors": [ "Fabien Gigante" ],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
