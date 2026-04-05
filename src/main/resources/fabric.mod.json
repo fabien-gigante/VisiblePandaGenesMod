@@ -3,7 +3,7 @@
 	"id": "visible-panda-genes",
 	"version": "${version}",
 	"name": "Visible Panda Genes",
-	"description": "Hint of panda genes visible on their textures.",
+	"description": "Hint of panda genes visible on their skin",
 	"authors": [ "Fabien Gigante" ],
 	"contact": {
 		"homepage": "https://github.com/fabien-gigante/VisiblePandaGenesMod",
@@ -28,8 +28,8 @@
 		}
 	],
 	"depends": {
-		"fabricloader": ">=0.18.4",
-		"minecraft": "~1.21.11",
-		"java": ">=21"
+		"fabricloader": ">=0.18.5",
+		"minecraft": "~26.1",
+		"java": ">=25"
 	}
 }
