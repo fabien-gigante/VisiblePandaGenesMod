@@ -1,12 +1,9 @@
 ![Icon](./src/main/resources/assets/visible-panda-genes/icon.png)
-# Visible Panda Genes
+# Visible Genome
 
-A visual hint of panda genes can be seen on their skin :
-- Color marks indicate their main and hidden genes, as shown in the screenshot below.
-
-
-A visual hint for screaming goats is also included :
-- They appears with a yellowish tint.
+A visual hint of pandas & goats genome can be seen on their skins :
+- Pandas have color marks for their main and hidden genes (as shown in the screenshot below)
+- Screaming goats appear with a creamy tint
 
 <img width="1307" height="689" alt="image" src="https://github.com/user-attachments/assets/d468a3e3-f6ff-4feb-a9e8-809021a08dea" />
 
