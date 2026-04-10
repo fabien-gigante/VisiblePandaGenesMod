@@ -26,14 +26,14 @@ public class GoatRendererMixin {
 	public GoatRenderState createRenderState() { return new GoatRenderStateExt(); }
 
 	@Inject(method = "extractRenderState", at = @At("TAIL"))
-	public void extractRenderStateExt(Goat entity, GoatRenderState state, float partialTicks, CallbackInfo ci) {
-		GoatRenderStateExt stateExt = (GoatRenderStateExt)state;
-		stateExt.isScreaming = entity.isScreamingGoat();
+	public void extractRenderStateExt(Goat goat, GoatRenderState goatState, float partialTicks, CallbackInfo ci) {
+		GoatRenderStateExt state = (GoatRenderStateExt)goatState;
+		state.isScreaming = goat.isScreamingGoat();
 	}
 
     @ModifyReturnValue(method = "getTextureLocation", at = @At("RETURN"))
-    public Identifier modifyGetTextureLocation(Identifier original, GoatRenderState state) {
-        GoatRenderStateExt stateExt = (GoatRenderStateExt)state;
-        return stateExt.isScreaming ? (stateExt.isBaby ? SCREAMING_BABY_TEXTURE : SCREAMING_TEXTURE) : original;
+    public Identifier modifyGetTextureLocation(Identifier original, GoatRenderState goatState) {
+        GoatRenderStateExt state = (GoatRenderStateExt)goatState;
+        return state.isScreaming ? (state.isBaby ? SCREAMING_BABY_TEXTURE : SCREAMING_TEXTURE) : original;
     }
 }

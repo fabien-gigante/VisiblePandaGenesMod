@@ -27,17 +27,17 @@ public class PandaRendererMixin {
 	public PandaRenderState createRenderState() { return new PandaRenderStateExt(); }
 
 	@Inject(method = "extractRenderState", at = @At("TAIL"))
-	public void extractRenderStateExt(Panda panda, PandaRenderState pandaRenderState, float f, CallbackInfo ci) {
-		PandaRenderStateExt state = (PandaRenderStateExt)pandaRenderState;
+	public void extractRenderStateExt(Panda panda, PandaRenderState pandaState, float partialTicks, CallbackInfo ci) {
+		PandaRenderStateExt state = (PandaRenderStateExt)pandaState;
 		state.mainGene = panda.getMainGene();
 		state.hiddenGene = panda.getHiddenGene();
 	}
 
 	@Overwrite
-	public Identifier getTextureLocation(PandaRenderState pandaRenderState) {
-		PandaRenderStateExt state = (PandaRenderStateExt)pandaRenderState;
+	public Identifier getTextureLocation(PandaRenderState pandaState) {
+		PandaRenderStateExt state = (PandaRenderStateExt)pandaState;
 		var textures = state.isBaby ? BABY_TEXTURES : TEXTURES;
-		return textures.getOrDefault(Pair.of(state.mainGene, state.hiddenGene), textures.get(Pair.of(Panda.Gene.NORMAL, Panda.Gene.NORMAL)));
+		return textures.get(Pair.of(state.mainGene, state.hiddenGene));
 	}
 
 	static {
@@ -46,7 +46,8 @@ public class PandaRendererMixin {
 		for(boolean isBaby : new boolean[]{false, true})
 			for (Panda.Gene mainGene : Panda.Gene.values())
 				for (Panda.Gene hiddenGene : Panda.Gene.values()) {
-					String textureName = mainGene.toString().toLowerCase() + "_" + hiddenGene.toString().toLowerCase()
+					String textureName = 
+						mainGene.toString().toLowerCase() + "_" + hiddenGene.toString().toLowerCase()
 						+ "_panda" + (isBaby ? "_baby" : "") + ".png";
 					Identifier textureId = Identifier.withDefaultNamespace("textures/entity/panda/genome/" + textureName);
 					(isBaby ? BABY_TEXTURES : TEXTURES).put(Pair.of(mainGene, hiddenGene), textureId);
