@@ -2,8 +2,8 @@
 	"schemaVersion": 1,
 	"id": "visible-panda-genes",
 	"version": "${version}",
-	"name": "Visible Panda Genes",
-	"description": "Hint of panda genes visible on their skin",
+	"name": "Visible Genome",
+	"description": "A visual hint of pandas & goats genome can be seen on their skins",
 	"authors": [ "Fabien Gigante" ],
 	"contact": {
 		"homepage": "https://github.com/fabien-gigante/VisiblePandaGenesMod",
