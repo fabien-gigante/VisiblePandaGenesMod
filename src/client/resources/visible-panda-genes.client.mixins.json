@@ -3,7 +3,8 @@
 	"package": "com.fabien_gigante.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
-		"PandaRendererMixin"
+		"PandaRendererMixin",
+		"GoatRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

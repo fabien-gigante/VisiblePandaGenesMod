@@ -17,16 +17,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.fabien_gigante.PandaRenderStateExt;
 import com.mojang.datafixers.util.Pair;
 
+
 @Mixin(PandaRenderer.class)
 public class PandaRendererMixin {
 	@Unique
-	private static final Map<Pair<Panda.Gene, Panda.Gene>, Identifier> TEXTURES;
+	private static final Map<Pair<Panda.Gene, Panda.Gene>, Identifier> TEXTURES, BABY_TEXTURES;
 
 	@Overwrite
 	public PandaRenderState createRenderState() { return new PandaRenderStateExt(); }
 
 	@Inject(method = "extractRenderState", at = @At("TAIL"))
-	public void extractRenderState(Panda panda, PandaRenderState pandaRenderState, float f, CallbackInfo ci) {
+	public void extractRenderStateExt(Panda panda, PandaRenderState pandaRenderState, float f, CallbackInfo ci) {
 		PandaRenderStateExt state = (PandaRenderStateExt)pandaRenderState;
 		state.mainGene = panda.getMainGene();
 		state.hiddenGene = panda.getHiddenGene();
@@ -35,16 +36,20 @@ public class PandaRendererMixin {
 	@Overwrite
 	public Identifier getTextureLocation(PandaRenderState pandaRenderState) {
 		PandaRenderStateExt state = (PandaRenderStateExt)pandaRenderState;
-		return TEXTURES.getOrDefault(Pair.of(state.mainGene, state.hiddenGene), TEXTURES.get(Pair.of(Panda.Gene.NORMAL, Panda.Gene.NORMAL)));
+		var textures = state.isBaby ? BABY_TEXTURES : TEXTURES;
+		return textures.getOrDefault(Pair.of(state.mainGene, state.hiddenGene), textures.get(Pair.of(Panda.Gene.NORMAL, Panda.Gene.NORMAL)));
 	}
 
 	static {
 		TEXTURES = new java.util.HashMap<>();
-		for (Panda.Gene mainGene : Panda.Gene.values())
-			for (Panda.Gene hiddenGene : Panda.Gene.values()) {
-				String textureName = mainGene.toString().toLowerCase() + "_" + hiddenGene.toString().toLowerCase() + "_panda.png";
-				Identifier textureId = Identifier.withDefaultNamespace("textures/entity/panda/genome/" + textureName);
-				TEXTURES.put(Pair.of(mainGene, hiddenGene), textureId);
-			}
+		BABY_TEXTURES = new java.util.HashMap<>();
+		for(boolean isBaby : new boolean[]{false, true})
+			for (Panda.Gene mainGene : Panda.Gene.values())
+				for (Panda.Gene hiddenGene : Panda.Gene.values()) {
+					String textureName = mainGene.toString().toLowerCase() + "_" + hiddenGene.toString().toLowerCase()
+						+ "_panda" + (isBaby ? "_baby" : "") + ".png";
+					Identifier textureId = Identifier.withDefaultNamespace("textures/entity/panda/genome/" + textureName);
+					(isBaby ? BABY_TEXTURES : TEXTURES).put(Pair.of(mainGene, hiddenGene), textureId);
+				}
 	}
 }
