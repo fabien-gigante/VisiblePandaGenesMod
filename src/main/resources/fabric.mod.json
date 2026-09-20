@@ -1,29 +1,29 @@
 {
 	"schemaVersion": 1,
-	"id": "visible-panda-genes",
+	"id": "visible-genome",
 	"version": "${version}",
 	"name": "Visible Genome",
 	"description": "A visual hint of pandas & goats genome can be seen on their skins",
 	"authors": [ "Fabien Gigante" ],
 	"contact": {
-		"homepage": "https://github.com/fabien-gigante/VisiblePandaGenesMod",
-		"sources": "https://github.com/fabien-gigante/VisiblePandaGenesMod"
+		"homepage": "https://github.com/fabien-gigante/VisibleGenome",
+		"sources": "https://github.com/fabien-gigante/VisibleGenome"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/visible-panda-genes/icon.png",
+	"icon": "assets/visible-genome/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.fabien_gigante.VisiblePandaGenesMod"
+			"com.fabien_gigante.VisibleGenomeMod"
 		],
 		"client": [
-			"com.fabien_gigante.VisiblePandaGenesClient"
+			"com.fabien_gigante.VisibleGenomeClient"
 		]
 	},
 	"mixins": [
-		"visible-panda-genes.mixins.json",
+		"visible-genome.mixins.json",
 		{
-			"config": "visible-panda-genes.client.mixins.json",
+			"config": "visible-genome.client.mixins.json",
 			"environment": "client"
 		}
 	],
